@@ -36,7 +36,3 @@ async def get_token(cfg: Config, session: str = "universal") -> AccessToken:
             return AccessToken.parse_raw(await resp.text())
         except ValidationError as e:
             raise TokenInvalid from e
-
-
-# asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-# asyncio.run(get_token())

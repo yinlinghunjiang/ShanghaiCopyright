@@ -34,7 +34,9 @@ async def get_elements() -> None:
         }
         async with session.post(url, data=json.dumps(data), headers=headers) as r:
             if r.status == 200 and await r.text() != "[]":
-                with open(OUTPUT_DIR / f"{raw[i]['name']}.json", "w", encoding="UTF-8") as f:
+                with open(
+                    OUTPUT_DIR / f"{raw[i]['name']}.json", "w", encoding="UTF-8"
+                ) as f:
                     f.write(await r.text())
 
 
