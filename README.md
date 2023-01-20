@@ -16,16 +16,13 @@
 
      poetry install
 
-     mkdir /output
-
      poetry run python main.py
 
 ## ✨ Todos
 
 - [ ] Login with Phonenumber & Password instead of Authorization API
+- [ ] Raise TokenInvalid or ResponseEmpty when needed
 
 ## 🙇‍ Contributors
 
-| <img src="https://avatars.githubusercontent.com/u/49110142?v=4" alt="Nullqwertyuiop" width="50px" height="50px"/> || <img src="https://avatars.githubusercontent.com/u/65386393?v=4" width="50px" height="50px"/> || <img src="https://avatars.githubusercontent.com/u/68178871?v=4" alt="yinlinghunjiang" width="50px" height="50px"/>
-| ------- || ------- || ------- |
-| Nullqwertyuiop || Little-LinNian|| yinlinghunjiang|
+<img src="https://avatars.githubusercontent.com/u/49110142?v=4" alt="Nullqwertyuiop" width="50px" height="50px"/> <img src="https://avatars.githubusercontent.com/u/65386393?v=4" width="50px" height="50px"/> <img src="https://avatars.githubusercontent.com/u/68178871?v=4" alt="yinlinghunjiang" width="50px" height="50px"/>

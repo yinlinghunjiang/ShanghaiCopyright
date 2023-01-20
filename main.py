@@ -1,13 +1,15 @@
 import asyncio
 import json
+from pathlib import Path
 from utils import init_config, config, sessions
 from libs.authorization import get_token
 
 init_config("./config/configs.yml")
-# cfg: Config = config.get()
+OUTPUT_DIR = Path(__file__).parent / "output"
+OUTPUT_DIR.mkdir(exist_ok=True, parents=True)
 
 
-async def get_elements(**_kwargs: map) -> None:
+async def get_elements() -> None:
     data = {
         "DataSource": {"CommandText": "select name from sysobjects where xtype='U'"}
     }
@@ -32,8 +34,11 @@ async def get_elements(**_kwargs: map) -> None:
         }
         async with session.post(url, data=json.dumps(data), headers=headers) as r:
             if r.status == 200 and await r.text() != "[]":
-                with open("./output/" + raw[i]["name"] + ".json", "w", encoding="UTF-8") as f:
+                with open(
+                    OUTPUT_DIR / f"{raw[i]['name']}.json", "w", encoding="UTF-8"
+                ) as f:
                     f.write(await r.text())
 
 
-asyncio.run(get_elements())
+if __name__ == "__main__":
+    asyncio.run(get_elements())
