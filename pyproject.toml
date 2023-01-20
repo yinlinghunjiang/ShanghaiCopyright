@@ -2,7 +2,7 @@
 name = "shanghaicopyright"
 version = "0.1.0"
 description = ""
-authors = ["Silverowo <1581647952@qq.com>, nullqwertyuiop <nullqwertyuiop@qq.com>, Little-LinNian <2544704967@qq.com>"]
+authors = ["Silverowo <1581647952@qq.com>, nullqwertyuiop <null@member.fsf.org>, Little-LinNian <2544704967@qq.com>"]
 license = "AGPL-3.0 license"
 readme = "README.md"
 
@@ -13,7 +13,6 @@ pydantic = "^1.10.4"
 contextvars = "^2.4"
 asyncio = "^3.4.3"
 PyYAML = "^6.0"
-
 
 [build-system]
 requires = ["poetry-core"]
