@@ -1,6 +1,12 @@
+"""
+    @Filename: authorization.py
+    @Author: Silverowo, Nullqwertyuiop
+    @Time: 2023/1/24
+"""
+
 from utils import sessions
 from utils import Config
-from libs.exceptions import TokenInvalid, ResponseEmpty
+from libs.exceptions import TokenInvalid
 from libs.models import AccessToken
 
 from pydantic import ValidationError
@@ -21,6 +27,13 @@ HEADERS: dict = {
 
 
 async def get_token(cfg: Config, session: str = "universal") -> AccessToken:
+    """
+    Get token from authorization Api
+
+    Args:
+        cfg (object): The object from config yaml file.
+        session (str): The name of session. (default: universal)
+    """
     client = await sessions.get(session)
 
     async with client.get(
@@ -34,5 +47,5 @@ async def get_token(cfg: Config, session: str = "universal") -> AccessToken:
         resp.raise_for_status()
         try:
             return AccessToken.parse_raw(await resp.text())
-        except ValidationError as e:
-            raise TokenInvalid from e
+        except ValidationError as error:
+            raise TokenInvalid from error

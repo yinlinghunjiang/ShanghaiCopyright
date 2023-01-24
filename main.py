@@ -1,3 +1,11 @@
+"""
+    @Filename: main.py
+    @Author: Silverowo, Nullqwertyuiop
+    @Time: 2023/1/24
+"""
+
+# pylint: disable=consider-using-enumerate
+
 import asyncio
 import json
 from pathlib import Path
@@ -10,6 +18,9 @@ OUTPUT_DIR.mkdir(exist_ok=True, parents=True)
 
 
 async def get_elements() -> None:
+    """
+    Get datebase elements from ShanghaiCopyright MobileApi
+    """
     data = {
         "DataSource": {"CommandText": "select name from sysobjects where xtype='U'"}
     }
@@ -29,15 +40,15 @@ async def get_elements() -> None:
     for i in range(len(raw)):
         data = {
             "DataSource": {
-                "CommandText": f"select top 1 * from {raw[i]['name']} order by InputTime DESC"
+                "CommandText": f"select * from {raw[i]['name']} order by InputTime DESC"
             }
         }
-        async with session.post(url, data=json.dumps(data), headers=headers) as r:
-            if r.status == 200 and await r.text() != "[]":
+        async with session.post(url, data=json.dumps(data), headers=headers) as resp:
+            if resp.status == 200 and await resp.text() != "[]":
                 with open(
                     OUTPUT_DIR / f"{raw[i]['name']}.json", "w", encoding="UTF-8"
-                ) as f:
-                    f.write(await r.text())
+                ) as file:
+                    file.write(await resp.text())
 
 
 if __name__ == "__main__":
