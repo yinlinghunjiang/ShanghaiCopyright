@@ -4,6 +4,8 @@
     @Time: 2023/1/24
 """
 
+# pylint: disable=import-error
+
 from contextlib import suppress
 from aiohttp import ClientSession
 
@@ -12,6 +14,7 @@ class SessionContainer:
     """
     The session container
     """
+
     session: dict[str, ClientSession] = {}
 
     async def get(

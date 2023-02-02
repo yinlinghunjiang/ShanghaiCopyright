@@ -4,7 +4,7 @@
     @Time: 2023/1/24
 """
 
-# pylint: disable=too-few-public-methods, no-name-in-module
+# pylint: disable=too-few-public-methods, no-name-in-module, import-error
 
 from pydantic import BaseModel
 
@@ -16,6 +16,7 @@ class AuthModel(BaseModel):
     Args:
         BaseModel (BaseModel): Class from pydantic
     """
+
     grant_type: str
 
     client_id: str
@@ -30,6 +31,7 @@ class AccessToken(BaseModel):
     Args:
         BaseModel (BaseModel): Class from pydantic
     """
+
     access_token: str
 
     token_type: str

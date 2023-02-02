@@ -1,4 +1,3 @@
-auth:
-  - grant_type:
-  - cid:
-  - client_secret:
+grant_type: 
+client_id: 
+client_secret: 

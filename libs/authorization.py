@@ -4,13 +4,13 @@
     @Time: 2023/1/24
 """
 
+# pylint: disable=import-error
+
+from pydantic import ValidationError
 from utils import sessions
 from utils import Config
 from libs.exceptions import TokenInvalid
 from libs.models import AccessToken
-
-from pydantic import ValidationError
-
 
 URL: str = (
     "https://shbqdj.cn/MobileApi/Authorization/OAuth2/access_token"

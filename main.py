@@ -38,13 +38,9 @@ async def get_elements() -> None:
     async with session.post(url, data=json.dumps(data), headers=headers) as res:
         raw = json.loads(await res.text())
     for i in range(len(raw)):
-        data = {
-            "DataSource": {
-                "CommandText": f"select * from {raw[i]['name']} order by InputTime DESC"
-            }
-        }
+        data = {"DataSource": {"CommandText": f"select * from {raw[i]['name']}"}}
         async with session.post(url, data=json.dumps(data), headers=headers) as resp:
-            if resp.status == 200 and await resp.text() != "[]":
+            if resp.status == 200:
                 with open(
                     OUTPUT_DIR / f"{raw[i]['name']}.json", "w", encoding="UTF-8"
                 ) as file:
