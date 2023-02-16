@@ -5,6 +5,7 @@
 <img src="https://img.shields.io/static/v1?label=python&message=3.10+&color=green"/>
 <img src="https://img.shields.io/static/v1?label=License&message=AGPL-3.0&color=red"/>
 <img src="https://img.shields.io/static/v1?label=code style&message=Black&color=black"/>
+<img src="https://github.com/yinlinghunjiang/ShanghaiCopyright/actions/workflows/pylint.yml/badge.svg"/>
 
 </div>
 

@@ -11,6 +11,7 @@ import json
 from pathlib import Path
 from utils import init_config, config, sessions
 from libs.authorization import get_token
+from loguru import logger
 
 init_config("./config/configs.yml")
 OUTPUT_DIR = Path(__file__).parent / "output"
@@ -41,11 +42,11 @@ async def get_elements() -> None:
         data = {"DataSource": {"CommandText": f"select * from {raw[i]['name']}"}}
         async with session.post(url, data=json.dumps(data), headers=headers) as resp:
             if resp.status == 200:
+                logger.info(f"正在下载{raw[i]['name']}")
                 with open(
                     OUTPUT_DIR / f"{raw[i]['name']}.json", "w", encoding="UTF-8"
                 ) as file:
                     file.write(await resp.text())
+                    logger.info(f"正在写入至{raw[i]['name']}.json")
 
-
-if __name__ == "__main__":
-    asyncio.run(get_elements())
+asyncio.run(get_elements())
