@@ -4,14 +4,16 @@
     @Time: 2023/1/24
 """
 
-# pylint: disable=consider-using-enumerate
+# pylint: disable=consider-using-enumerate, import-error
 
 import asyncio
 import json
 from pathlib import Path
-from utils import init_config, config, sessions
-from libs.authorization import get_token
+
 from loguru import logger
+
+from libs.authorization import get_token
+from utils import config, init_config, sessions
 
 init_config("./config/configs.yml")
 OUTPUT_DIR = Path(__file__).parent / "output"
@@ -48,5 +50,6 @@ async def get_elements() -> None:
                 ) as file:
                     file.write(await resp.text())
                     logger.info(f"正在写入至{raw[i]['name']}.json")
+
 
 asyncio.run(get_elements())

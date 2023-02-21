@@ -15,9 +15,9 @@
 
      nano configs.yml
 
-     poetry install
+     pdm install
 
-     poetry run python main.py
+     pdm run python main.py
 
 ## ✨ Todos
 
