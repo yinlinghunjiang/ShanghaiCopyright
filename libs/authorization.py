@@ -7,10 +7,10 @@
 # pylint: disable=import-error
 
 from pydantic import ValidationError
-from utils import sessions
-from utils import Config
+
 from libs.exceptions import TokenInvalid
 from libs.models import AccessToken
+from utils import Config, sessions
 
 URL: str = (
     "https://shbqdj.cn/MobileApi/Authorization/OAuth2/access_token"

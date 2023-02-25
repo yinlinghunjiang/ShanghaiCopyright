@@ -7,6 +7,7 @@
 # pylint: disable=import-error
 
 from contextlib import suppress
+
 from aiohttp import ClientSession
 
 
